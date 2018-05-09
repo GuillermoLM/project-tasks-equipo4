@@ -1,0 +1,28 @@
+{
+  "name": "task-do",
+  "version": "1.0.0",
+  "description": "list-to-do",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "live-server",
+    "task4": "git push origin master"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GeeksHubsAcademy/project-tasks-equipo4.git"
+  },
+  "keywords": [
+    "list"
+  ],
+  "author": "equipo4",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GeeksHubsAcademy/project-tasks-equipo4/issues"
+  },
+  "homepage": "https://github.com/GeeksHubsAcademy/project-tasks-equipo4#readme",
+  "devDependencies": {
+    "live-server": "^1.2.0",
+    "normalize-css": "^2.3.1"
+  }
+}
