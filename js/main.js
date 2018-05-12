@@ -8,7 +8,7 @@
 	var addTask = function(){
 		var task = inputTask.value,	
 			newTask = document.createElement("div"),
-			link = document.createElement("p"),
+			link = document.createElement("span"),
 			content = document.createTextNode(task);
 		
 		if (task === "") {//When the input is empty and you click add task
@@ -24,7 +24,7 @@
 		inputTask.value = "";
 		//Delete elements 
 		for (var i = 0; i <= list.children.length -1; i++) {
-			list.children[i].addEventListener("click", function(){
+			list.children[i].children[0].addEventListener("click", function () {
 			this.parentNode.removeChild(this);
 			});
 		}
