@@ -30,3 +30,46 @@
 .taskItem span {
     overflow-wrap: break-word;
 }
+
+/*THEME*/
+
+body,
+html {
+    /*background body*/
+    background: -webkit-gradient(linear, left top, left bottom, from(#4ABCAD), to(#cbccc8)) fixed;
+    font-size: calc(13px + 1vw);
+    font-family: 'Cabin', sans-serif;
+    /*estilo texto*/
+}
+
+/* he creado esta parte para hacer el efecto, con esto se pasa el mouse por el texto y queda tachado*/
+
+span:hover {
+    text-decoration: line-through;
+    color: rgb(105, 88, 65);
+    text-shadow: 0 0 30px #00FF00/*#fff*/
+    ;
+    /*efecto sombra para el texto*/
+}
+
+a
+/*----*/
+
+#inputId {
+    background-color: #ddd;
+    /*efecto para la caja de texto*/
+    box-shadow: 0 0 20px #4f9;
+    /*fondo a la caja de texto*/
+}
+
+.add {
+    background-color: #cbccc8;
+    border-radius: 0.5em;
+}
+
+#inputId {
+    font-family: 'Cabin', sans-serif;
+    font-size: 0.7em;
+    box-shadow: 0 0 40px #03f;
+    /*efecto sombra*/
+}
