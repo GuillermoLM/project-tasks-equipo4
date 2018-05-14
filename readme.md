@@ -14,16 +14,16 @@
       - Borrar el Div del DOM al apretar la X de borrar.
 
 
-##To Improve
--Añadir el input con el Enter
--No añadir elementos cuando es solo con el "espacio"
--Clase taskItem añadir al JS
--Mejorar el delete elements uniendo el EventListener al link
+## To Improve
+- [x] Añadir el input con el Enter
+- No añadir elementos cuando es solo con el "espacio"
+- Clase taskItem añadir al JS
+- Mejorar el delete elements uniendo el EventListener al link
 
 ## To do
 - mainContainer
-    -header
-    - listWrapper
-        -listContainer
-        -addTask
-        -listTask
+    - [] header
+    - [] listWrapper
+        - [] listContainer
+        - [] addTask
+        - [] listTask
