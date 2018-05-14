@@ -24,7 +24,7 @@
 		inputTask.value = "";
 		//Delete elements 
 		for (var i = 0; i <= list.children.length -1; i++) {
-			list.children[i].children[0].addEventListener("click", function () {
+			list.children[i].addEventListener("click", function () {
 			this.parentNode.removeChild(this);
 			});
 		}
