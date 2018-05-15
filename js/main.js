@@ -37,4 +37,11 @@
 
 	buttonTask.addEventListener("click", addTask);//Add task
 	inputTask.addEventListener("click", checkTask);//Check task
+
+	document.body.onkeyup = function(e){
+		if(e.keyCode == 13){
+		  addTask();
+		}
+	}
 })();
+
