@@ -1,4 +1,4 @@
-(function () {
+/*(function () {
 	//Variables
 	var list = document.getElementById("list"),
 		inputTask = document.getElementById("inputId"),
@@ -56,4 +56,91 @@
 			addTask();
 		}
 	}
-})();
+})();*/
+
+let createListTemplete = (text) =>
+	`
+	<div class="list">
+		<div class="listHeader">
+		<h4>${text}
+			<button class="buttonDL">X</button>
+		</h4>
+			
+		</div>
+		<div class="addTask">
+			<input type="text">
+			<button class="buttonId">add Task</button>
+		</div>
+	</div>
+	
+	`
+let createTaskItemTemplate = (text) =>
+	`
+	<div class="taskItem">
+		<button class="buttonDT">X</button>
+		<div class="taskText">
+			${text}
+		</div>
+	</div>
+	`
+
+let addList = () => {
+	let input = document.getElementsByClassName('inputNewList')[0];
+	//Recoger el nombre de la lista
+	let listName = input.value.trim();
+	console.log(listName);
+
+	//Si no hay nombre no hagas nada
+	if (listName === "") {
+		console.error('no valid list name');
+		return;
+	}
+	//Borrar el input
+	input.value = '';
+	//Crear el nodo
+	let newList = createElementFromString(createListTemplete(listName));
+	//Inyectarlo
+	getEl('lists')[0].appendChild(newList);
+
+
+
+
+	// add listener to remove it
+	let removeListButtons = getEl('buttonDL')
+	
+	for (const el of removeListButtons) {
+		
+		
+		el.addEventListener('click', removeList)
+	}
+
+
+}
+let removeList = (e) => {
+	
+	e.target.parentNode.parentNode.parentNode.remove();
+
+};
+
+let callBackOn = () => {
+
+
+	document.getElementsByClassName('addList')[0].addEventListener("click", addList);
+
+
+}
+document.addEventListener('DOMContentLoaded', callBackOn);
+
+function createElementFromString(htmlString) {
+	var div = document.createElement('div');
+	div.innerHTML = htmlString.trim();
+
+	// Change this to div.childNodes to support multiple top-level nodes
+	return div.firstChild;
+}
+
+function getEl(cssSelector) {
+	return document.getElementsByClassName(cssSelector);
+}
+
+let $ = document.querySelectorAll;
