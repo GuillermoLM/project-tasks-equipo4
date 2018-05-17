@@ -13,21 +13,26 @@
 
 <body>
 
-  <div id="container">
+  <header>
 
-    <div class="addTask">
-      <input type="text" id="inputId" placeholder="Agrega tu tarea">
-      <input type="button" class="buttonId" id="buttonAdd" value="Go!">
+    <input type="text" id="inputId" placeholder="Agrega Lista">
+<button class="buttonId" id="buttonAdd">Add List</button>
+  </header>
+  <section>
+
+    <div class="lists">
+      <div class="list">
+        <div class="addTask">
+          <input type="text">
+          <button class="buttonId">add Task</button>
+        </div>
+        <div id="list" class="taskList">
+          <button class="buttonList">X</button>
+        </div>
+      </div>
     </div>
 
-
-
-    <div id="list" class="taskList">
-
-
-    </div>
-
-  </div>
+  </section>
   <script src="js/main.js"></script>
 </body>
 
