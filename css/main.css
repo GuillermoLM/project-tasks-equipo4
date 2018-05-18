@@ -62,8 +62,8 @@ html {
 } */
 
 .addTask {
-    background-color: #cbccc8;
-    border-radius: 0.5em;
+    background-color: #ecf1f1;
+    display: flex;
 }
 
 #inputId {
@@ -89,14 +89,15 @@ header {
     justify-content: flex-start;
     padding: 5px;
     margin-bottom: 10px;
+    margin-left: 10px;
 }
 .lists {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    border: 3px ridge aquamarine;
     padding: 5px;
     margin: 0 5px;
+    align-items: flex-start;
 }
 
 section {
@@ -105,27 +106,52 @@ section {
 }
 
 .list {
-    width: 270px;
+    width: 30vw;
     margin: 0 5px;
     background: #cbccc8;
     padding: 5px;
+    border: 3px ridge aquamarine;
+    flex-wrap: wrap;
+    border-radius: 0.5em;
 }
 
 .taskItem {
     display: flex;
     flex-direction: row;
     padding: 10px 0;
+    align-items: center;
 }
 
 .taskItem button {
     margin-right: 10px;
 }
 
-
-.buttonList {
-    visibility: hidden;
+.listHeader h4 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    overflow-wrap: break-word;
+    overflow: auto;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
 }
-.buttonList:hover {
-    visibility: visible;
+
+.listHeader {
+    overflow-wrap: break-word;
+    overflow: auto;
 }
 
+
+.taskText {
+    overflow-wrap: break-word;
+    overflow: auto;
+}
+
+.inputNewTask {
+    flex: 1;
+}
+
+.buttonDL {
+    margin-right: 10px;
+}
