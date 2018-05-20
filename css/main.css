@@ -112,6 +112,8 @@ section {
     flex-direction: row;
     padding: 10px 0;
     align-items: center;
+    margin: 5px;
+    justify-content: center;
 }
 
 .taskItem button {
@@ -125,7 +127,7 @@ section {
     word-break: break-all;
     display: flex;
     flex-direction: row-reverse;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
 }
 
@@ -172,4 +174,20 @@ input, button {
     background: #cbccc8;
     border: 3px ridge aquamarine;
     border-radius: 0.5em;
+}
+
+.buttonDT {
+    opacity: 0;
+    transition: opacity 2s linear;
+}
+
+.buttonDT:hover {
+    opacity: 1;
+    transition: opacity 2s linear;
+}
+
+.taskItem {
+    box-shadow: 0 0 20px rgb(222, 223, 224);
+    border-radius: 0.3em;
+    background-color: #ecf1f1;
 }
