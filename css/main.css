@@ -181,7 +181,7 @@ input, button {
     transition: opacity 2s linear;
 }
 
-.buttonDT:hover {
+.taskItem:hover .buttonDT {
     opacity: 1;
     transition: opacity 0.5s linear;
 }
