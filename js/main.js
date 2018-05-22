@@ -124,7 +124,6 @@ let removeList = (e) =>
 let addTask = (evento) => 
 {
 	let inputTask = evento.target.parentNode.children[0];
-	console.log(inputTask);
 	//Recoger el nombre de la lista
 	let taskName = inputTask.value.trim();
 
@@ -140,7 +139,6 @@ let addTask = (evento) =>
 	let newTask = createElementFromString(createTaskItemTemplate(taskName));
 	//Inyectarlo
 	let actualList = evento.target.parentNode.parentNode;
-	console.log(actualList);
 	actualList.appendChild(newTask);
 	// add listener to remove it
 	let removeTaskButtons = getEl('buttonDT')
