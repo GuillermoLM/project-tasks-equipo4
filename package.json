@@ -5,7 +5,8 @@
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "live-server",
+    "start:frotend": "live-server frontend/",
+    "start:backend": "nodemon backend/index.js",
     "task4": "git push origin master"
   },
   "repository": {
@@ -22,7 +23,15 @@
   },
   "homepage": "https://github.com/GeeksHubsAcademy/project-tasks-equipo4#readme",
   "devDependencies": {
+    "axios": "^0.18.0",
+    "concurrently": "^3.5.1",
     "live-server": "^1.2.0",
+    "nodemon": "^1.17.5",
     "normalize-css": "^2.3.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3"
   }
 }
