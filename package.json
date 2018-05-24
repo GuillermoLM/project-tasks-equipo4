@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:frotend": "live-server frontend/",
     "start:backend": "nodemon backend/index.js",
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
     "task4": "git push origin master"
   },
   "repository": {
