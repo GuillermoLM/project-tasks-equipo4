@@ -4,7 +4,9 @@ var cors = require('cors');
 let getAllBoard = require('./getAllBoard.js');
 let saveNewTask = require('./saveNewTask.js');
 let saveNewList = require('./saveNewList.js');
-let bodyParser = require('body-parser')
+let removeList = require('./removeNewList.js');
+// let removeTask = require('./removeNewTask.js');
+let bodyParser = require('body-parser');
 // allow cross origin domain
 app.use(cors());
 
@@ -18,9 +20,17 @@ app.use(bodyParser.urlencoded({
 app.get('/api/lists', getAllBoard);
 
 // Endpoint for saving new tasks
-app.post('/api/lists/:listID', saveNewTask)
+app.post('/api/lists/:listID', saveNewTask);
 // Endpoint for saving new lists
-app.post('/api/lists', saveNewList)
+app.post('/api/lists', saveNewList);
+
+
+// endpoint remove list
+app.delete('/api/lists/:id', removeList);
+
+// endpoint remove tasks
+
+// app.delete('/api/lists/:listID/:id', removeTask);
 
 // start server listening at port 3000
 app.listen(3000, '127.0.0.1', () => {

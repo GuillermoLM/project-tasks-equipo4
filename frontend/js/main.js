@@ -1,5 +1,4 @@
-// todo
-// remove eventliseners 
+
 let createId = (namespace) => `${namespace}-${Date.now()}-${Math.round(Math.random() * 100)}`
 
 let createListTemplete = (text, id) =>
@@ -37,8 +36,8 @@ let callBackOnDomReady = () => {
     // fetch saved lists from the backend
     axios.get('http://127.0.0.1:3000/api/lists', config).then(paintListsOnStart).catch(console.error);
 
-    document.getElementsByClassName('addList')[0].addEventListener("click", addList);
-    document.body.onkeyup = function (e) {
+    document.querySelector('.addList').addEventListener("click", addList);
+    document.querySelector('.addList').onkeyup = function (e) {
         if (e.keyCode == 13) {
             addList();
         }
@@ -120,7 +119,12 @@ function getEl(cssSelector) {
 }
 
 let removeList = (e) => {
-    e.target.parentNode.parentNode.parentNode.remove();
+    let listNode = e.target.parentNode.parentNode.parentNode;
+    let listId = listNode.dataset.listid;
+    axios.delete(`http://127.0.0.1:3000/api/lists/${listId}/`).then(()=>{
+
+      listNode.remove();
+    }).catch();
 };
 
 let addTask = (evento) => {
@@ -145,7 +149,7 @@ let addTask = (evento) => {
     }
 
     let listId = listNode.dataset.listid;
-    console.log(listNode.dataset);
+
     
     // save task to the backend before injecting a new node
     saveTask(newTask, listId)
@@ -180,7 +184,6 @@ let paintTasks = (listNode, tasks) => {
     for (const task of tasks) {
         // crear un node html
         let newTaskNode = createElementFromString(createTaskItemTemplate(task.text, task.taskId));
-        console.log(task);
         // inyectar el node creado
         listNode.appendChild(newTaskNode);
         newTaskNode.addEventListener('click', removeTask);
@@ -188,6 +191,13 @@ let paintTasks = (listNode, tasks) => {
 }
 
 let removeTask = (a) => {
+
+    // let taskNode = e.target.parentNode.parentNode.parentNode;
+
+    // axios.delete(`http://127.0.0.1:3000/api/lists/${listId}/${taskId}`).then(() => {
+
+    //     taskNode.remove();
+    // }).catch();
     a.target.parentNode.remove();
 };
 
