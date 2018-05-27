@@ -27,7 +27,8 @@ let createTaskItemTemplate = (text, id) =>
 	`
 
 
-let callBackOnDomReady = () => {
+let callBackOnDomReady = () => 
+{
     let config = {
         headers: {
             'Access-Control-Allow-Origin': '*'
@@ -44,15 +45,17 @@ let callBackOnDomReady = () => {
     }
     
     document.addEventListener('click', (e) => {
-        // if(e.target.matches('.buttonId')) {
-        //     addTask(e)
-        // }
+         if(e.target.matches('.buttonDT')) {
+             removeTask(e)
+         }
     });
 }
+
 document.addEventListener('DOMContentLoaded', callBackOnDomReady);
 
 
-let paintListsOnStart = (response) => {
+let paintListsOnStart = (response) => 
+{
     let lists = response.data.lists;
     for (const list of lists) {
         let listNode = paintList(list.name, list.listId);
@@ -60,7 +63,8 @@ let paintListsOnStart = (response) => {
     }
 }
 
-let paintList = (listName, id) => {
+let paintList = (listName, id) => 
+{
     //Crear el nodo
     let listNode = createElementFromString(createListTemplete(listName, id));
     //Inyectarlo
@@ -71,11 +75,13 @@ let paintList = (listName, id) => {
     return listNode;
 }
 
-let saveList = function (list) {
+let saveList = function (list) 
+{
     return axios.post(`http://127.0.0.1:3000/api/lists`, list);
 }
 
-let addList = () => {
+let addList = () => 
+{
     let inputList = document.getElementsByClassName('inputNewList')[0];
     //Recoger el nombre de la lista
     let listName = inputList.value.trim();
@@ -85,7 +91,6 @@ let addList = () => {
         console.error('no valid list name');
         return;
     }
-    //Borrar el input
    
     let newList = {
         "listId": createId('list'),
@@ -107,18 +112,21 @@ let addList = () => {
     });
 }
 
-function createElementFromString(htmlString) {
+function createElementFromString(htmlString) 
+{
     var div = document.createElement('div');
     div.innerHTML = htmlString.trim();
     // Change this to div.childNodes to support multiple top-level nodes
     return div.firstChild;
 }
 
-function getEl(cssSelector) {
+function getEl(cssSelector) 
+{
     return document.getElementsByClassName(cssSelector);
 }
 
-let removeList = (e) => {
+let removeList = (e) => 
+{
     let listNode = e.target.parentNode.parentNode.parentNode;
     let listId = listNode.dataset.listid;
     axios.delete(`http://127.0.0.1:3000/api/lists/${listId}/`).then(()=>{
@@ -127,11 +135,11 @@ let removeList = (e) => {
     }).catch();
 };
 
-let addTask = (evento) => {
+let addTask = (evento) => 
+{
     let inputTask = evento.target.parentNode.children[0];
     //Recoger el nombre de la lista
     let taskName = inputTask.value.trim();
-
     let listNode = evento.target.parentNode.parentNode;
 
     //Si no hay nombre no hagas nada
@@ -139,7 +147,6 @@ let addTask = (evento) => {
         console.error('no valid list name');
         return;
     }
-    //Borrar el input
    
     let newTask = {
         "taskId": createId('task'),
@@ -150,7 +157,6 @@ let addTask = (evento) => {
 
     let listId = listNode.dataset.listid;
 
-    
     // save task to the backend before injecting a new node
     saveTask(newTask, listId)
         .then((response) => {
@@ -159,24 +165,17 @@ let addTask = (evento) => {
             // inyectar el node creado
             listNode.append(newTaskNode);
             // borrar el value;
-            inputTask.value = ''; // vanilla Js
+            inputTask.value = ''; 
         })
         .catch((e) => {
             // if the backend failed
             console.error('no se pudo guardar la tarea, inténtelo de nuevo:', e)
         })
-    //Crear el nodo
-    //let newTaskCreate = createElementFromString(createTaskItemTemplate(taskName));
-    //Inyectarlo
-    //let actualList = evento.target.parentNode.parentNode;
-    //actualList.append(newTaskCreate);
     // add listener to remove it
     let removeTaskButtons = getEl('buttonDT')
 
     for (const element of removeTaskButtons) {
         element.addEventListener('click', removeTask)
-        console.log(element);
-        
     }
 }
 
@@ -191,30 +190,21 @@ let paintTasks = (listNode, tasks) => {
     }
 }
 
-let removeTask = (e) => {
-    
+let removeTask = (e) =>
+{
     let listNode = e.target.parentNode.parentNode;
     let taskNode = e.target.parentNode;
    
-
     let listId = listNode.dataset.listid;
     let taskId = taskNode.dataset.taskid;
 
-    
-    
-    
-    // let taskNode = e.target.parentNode.parentNode.parentNode;
-
-    axios.delete(`http://127.0.0.1:3000/api/lists/${listId}/${taskId}`).then(() => {
-        
+    axios.delete(`http://127.0.0.1:3000/api/lists/${listId}/${taskId}`).then(() => {  
         taskNode.remove();
-       
-        
-    }).catch(function (error) {
+    }).catch(function (error) 
+    {
         console.error('nose ha podido guardar')
     }
     );
-
 };
 
 let saveTask = function (task, listId) {
