@@ -44,9 +44,9 @@ let callBackOnDomReady = () => {
     }
     
     document.addEventListener('click', (e) => {
-        /*if(e.target.matches('.buttonId')) {
-            addTask(e)
-        }*/
+        // if(e.target.matches('.buttonId')) {
+        //     addTask(e)
+        // }
     });
 }
 document.addEventListener('DOMContentLoaded', callBackOnDomReady);
@@ -175,11 +175,12 @@ let addTask = (evento) => {
 
     for (const element of removeTaskButtons) {
         element.addEventListener('click', removeTask)
+        console.log(element);
+        
     }
 }
 
 let paintTasks = (listNode, tasks) => {
-    console.log(tasks)
 
     for (const task of tasks) {
         // crear un node html
@@ -190,15 +191,30 @@ let paintTasks = (listNode, tasks) => {
     }
 }
 
-let removeTask = (a) => {
+let removeTask = (e) => {
+    
+    let listNode = e.target.parentNode.parentNode;
+    let taskNode = e.target.parentNode;
+   
 
+    let listId = listNode.dataset.listid;
+    let taskId = taskNode.dataset.taskid;
+
+    
+    
+    
     // let taskNode = e.target.parentNode.parentNode.parentNode;
 
-    // axios.delete(`http://127.0.0.1:3000/api/lists/${listId}/${taskId}`).then(() => {
+    axios.delete(`http://127.0.0.1:3000/api/lists/${listId}/${taskId}`).then(() => {
+        
+        taskNode.remove();
+       
+        
+    }).catch(function (error) {
+        console.error('nose ha podido guardar')
+    }
+    );
 
-    //     taskNode.remove();
-    // }).catch();
-    a.target.parentNode.remove();
 };
 
 let saveTask = function (task, listId) {

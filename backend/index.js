@@ -5,7 +5,7 @@ let getAllBoard = require('./getAllBoard.js');
 let saveNewTask = require('./saveNewTask.js');
 let saveNewList = require('./saveNewList.js');
 let removeList = require('./removeNewList.js');
-// let removeTask = require('./removeNewTask.js');
+let removeTask = require('./removeNewTask.js');
 let bodyParser = require('body-parser');
 // allow cross origin domain
 app.use(cors());
@@ -30,7 +30,7 @@ app.delete('/api/lists/:id', removeList);
 
 // endpoint remove tasks
 
-// app.delete('/api/lists/:listID/:id', removeTask);
+app.delete('/api/lists/:listID/:id', removeTask);
 
 // start server listening at port 3000
 app.listen(3000, '127.0.0.1', () => {
